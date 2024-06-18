@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5duema3n0jtu"]
+
+[ext_resource type="FontFile" uid="uid://bc8dpubv5rph2" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_li7u1"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_sfy8a"]
+
+[node name="Room" type="PanelContainer"]
+custom_minimum_size = Vector2(442, 300)
+offset_left = 278.0
+offset_top = 728.0
+offset_right = 720.0
+offset_bottom = 1028.0
+script = ExtResource("1_sfy8a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RoomName" type="Label" parent="MarginContainer/Rows"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0117647, 0.627451, 0.384314, 1)
+theme_override_fonts/font = ExtResource("1_li7u1")
+theme_override_font_sizes/font_size = 30
+text = "The Room Name"
+horizontal_alignment = 1
+
+[node name="RoomDescription" type="Label" parent="MarginContainer/Rows"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0117647, 0.627451, 0.384314, 1)
+theme_override_fonts/font = ExtResource("1_li7u1")
+theme_override_font_sizes/font_size = 25
+text = "This is the description of the room that is being presented."
+autowrap_mode = 3

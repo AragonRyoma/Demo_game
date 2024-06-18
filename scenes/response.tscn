@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwj33pb7ydk4q"]
+
+[ext_resource type="FontFile" uid="uid://bc8dpubv5rph2" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_qfuj1"]
+
+[node name="Response" type="Label"]
+custom_minimum_size = Vector2(1000, 0)
+offset_right = 1145.0
+offset_bottom = 50.0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 10.0
+theme_override_colors/font_color = Color(0.0117647, 0.627451, 0.384314, 1)
+theme_override_fonts/font = ExtResource("1_qfuj1")
+theme_override_font_sizes/font_size = 30
+text = "Game Response"
+autowrap_mode = 3

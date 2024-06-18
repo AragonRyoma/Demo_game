@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://c1s4p21q2adjr"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_d8fwc"]
+[ext_resource type="FontFile" uid="uid://8y4jbbm56yxk" path="res://assets/fonts/PixelifySans-Bold.ttf" id="1_e6706"]
+[ext_resource type="FontFile" uid="uid://bc8dpubv5rph2" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_f7iet"]
+[ext_resource type="Script" path="res://scripts/Input.gd" id="1_tbr8p"]
+[ext_resource type="Script" path="res://scripts/CommandProcessor.gd" id="2_jj2xd"]
+[ext_resource type="Script" path="res://scripts/RoomManager.gd" id="3_ok5qa"]
+[ext_resource type="PackedScene" uid="uid://c5duema3n0jtu" path="res://scenes/room.tscn" id="4_83ei8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfehe"]
+bg_color = Color(0.809734, 0.862504, 0.871525, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ds86"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uufsd"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1moah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ce5vr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0lnk0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d8fwc")
+
+[node name="CommandProcessor" type="Node" parent="."]
+script = ExtResource("2_jj2xd")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfehe")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GameInfo" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.7
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ds86")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="HistoryRow" type="VBoxContainer" parent="Background/MarginContainer/Rows/GameInfo/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uufsd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/InputArea"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="caret" type="Label" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0117647, 0.627451, 0.384314, 1)
+theme_override_fonts/font = ExtResource("1_e6706")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1moah")
+text = "  >  "
+
+[node name="Input" type="LineEdit" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.0117647, 0.627451, 0.384314, 1)
+theme_override_fonts/font = ExtResource("1_f7iet")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ce5vr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0lnk0")
+max_length = 50
+caret_blink = true
+secret_character = ">"
+script = ExtResource("1_tbr8p")
+
+[node name="RoomManager" type="Node" parent="."]
+script = ExtResource("3_ok5qa")
+
+[node name="HouseRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
+offset_left = 58.0
+offset_top = -388.0
+offset_right = 500.0
+offset_bottom = -88.0
+room_name = "casa"
+room_desc = "estoy en la casa"
+
+[node name="OutsideRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
+offset_left = 617.0
+offset_top = -389.0
+offset_right = 1059.0
+offset_bottom = -89.0
+room_name = "Outside"
+room_desc = "Something about the outside"
+
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" method="_on_text_submitted"]
