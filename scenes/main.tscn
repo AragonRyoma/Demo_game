@@ -114,7 +114,7 @@ offset_top = -388.0
 offset_right = 500.0
 offset_bottom = -88.0
 room_name = "casa"
-room_desc = "estoy en la casa"
+room_desc = "estoy en la casa."
 
 [node name="OutsideRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 617.0
