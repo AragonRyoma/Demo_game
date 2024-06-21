@@ -42,7 +42,7 @@ func print_items():
 	else:
 		var item_string = ""
 		for item in room_items_arr:
-			item_string += item.item_name + ""
+			item_string += item.item_name + ", "
 		print("items: " , item_string)
 
 
