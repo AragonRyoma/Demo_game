@@ -114,7 +114,6 @@ offset_top = -1474.0
 offset_right = 1032.0
 offset_bottom = -1174.0
 room_name = "casa"
-room_desc = "Idk its nice? It reminds me of a small little mexican pueblito of a home."
 
 [node name="OutsideRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 1156.0
@@ -132,7 +131,7 @@ offset_bottom = -1174.0
 room_name = "Some other room"
 room_desc = "Yes this is some other room. "
 
-[node name="BedRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
+[node name="Kitchen2" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 595.0
 offset_top = -1071.0
 offset_right = 1037.0
@@ -140,7 +139,7 @@ offset_bottom = -771.0
 room_name = "Bedroom"
 room_desc = "you know...The bedroom? Thats this"
 
-[node name="KitchenRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
+[node name="Kitchen" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 606.0
 offset_top = -1877.0
 offset_right = 1048.0

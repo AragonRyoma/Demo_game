@@ -47,13 +47,9 @@ func go(second_word: String) -> String:
 # this function is what allows you to change the room you are in. It tells the players data based off the room they switched to.
 func change_room(new_room : GameRoom) -> String:
 	current_room = new_room
-	var exit_strings = "\n".join(PackedStringArray(new_room.exits_dic.keys()))
-	var messages = "\n".join(PackedStringArray([
-		"You are in: " + new_room.room_name, "It is " + new_room.room_desc,
-	]))
-	print(current_room)
-	print(exit_strings)
-	return messages
+	return new_room.get_full_description()
+	
+	
 
 
 
