@@ -23,6 +23,8 @@ func process_command(input: String) -> String:
 	match first_word:
 		"go","g":
 			return go(second_word)
+		"take","grab":
+			return pick_up(second_word)
 		"help","h":
 			return help()
 		_:
@@ -43,6 +45,15 @@ func go(second_word: String) -> String:
 		return "That direction leads nowhere."
 
 
+func pick_up(second_word : String) -> String:
+	if second_word == "":
+		return "What would you like to take?"
+		for item in current_room.room_items_arr:
+				if second_word == self.item:
+					return "You took %s" % item
+	else: return "err"
+				
+			
 
 # this function is what allows you to change the room you are in. It tells the players data based off the room they switched to.
 func change_room(new_room : GameRoom) -> String:

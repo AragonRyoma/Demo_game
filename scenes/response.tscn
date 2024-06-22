@@ -10,6 +10,6 @@ size_flags_vertical = 1
 size_flags_stretch_ratio = 10.0
 theme_override_colors/font_color = Color(0.0117647, 0.627451, 0.384314, 1)
 theme_override_fonts/font = ExtResource("1_qfuj1")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 text = "Game Response"
 autowrap_mode = 3

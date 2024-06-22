@@ -14,7 +14,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-theme_override_font_sizes/font_size = 15
 autowrap_mode = 3
 
 [node name="Response" parent="." instance=ExtResource("3_y843b")]
