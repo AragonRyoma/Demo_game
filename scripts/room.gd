@@ -24,9 +24,12 @@ func add_item(item: Item):
 	room_items_arr.append(item)
 
 
+func remove_item(item : Item):
+	room_items_arr.erase(item)
+
+
 
 func get_full_description() -> String:
-		
 	print_items()
 	print_exits()
 	return get_room_description()
@@ -50,19 +53,35 @@ func print_exits():
 	print("\n".join(PackedStringArray(exits_dic.keys())))
 
 
-func connect_exit(direction, room):
+func connect_exit_unlocked(direction: String, room, override_room = null):
+	_connect_exit(direction,room, false, override_room)
+
+
+
+func connect_exit_locked(direction: String, room, override_room = null):
+	_connect_exit(direction, room, true, override_room)
+
+
+func _connect_exit(direction, room, is_locked: bool = false, override_room = null):
 	var exit = Exit.new()
 	exit.room_1 = self
 	exit.room_2 = room
+	exit.is_locked = is_locked
 	exits_dic[direction] = exit
-	match direction:
-		"west","w":
-			room.exits_dic["east"] = exit
-		"east","e":
-			room.exits_dic["west"] = exit
-		"north","n":
-			room.exits_dic["south"] = exit
-		"south","s":
-			room.exits_dic["north"] = exit
-		_:
-			printerr("This direction leads nowhere.")
+	if override_room != null:
+		room.exits_dic[override_room] = exit
+	else:
+		match direction:
+			"west","w":
+				room.exits_dic["east"] = exit
+			"east","e":
+				room.exits_dic["west"] = exit
+			"north","n":
+				room.exits_dic["south"] = exit
+			"south","s":
+				room.exits_dic["north"] = exit
+			_:
+				printerr("This direction leads nowhere.")
+
+
+

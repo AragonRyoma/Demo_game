@@ -128,6 +128,7 @@ offset_right = 1598.0
 offset_bottom = -1165.0
 room_name = "Outside"
 room_desc = "Something about the outside"
+lock = null
 
 [node name="SomeOtherRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 15.0
@@ -136,6 +137,7 @@ offset_right = 457.0
 offset_bottom = -1174.0
 room_name = "Some other room"
 room_desc = "Yes this is some other room. "
+lock = null
 
 [node name="BedRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 595.0
@@ -144,14 +146,7 @@ offset_right = 1037.0
 offset_bottom = -771.0
 room_name = "Bedroom"
 room_desc = "you know...The bedroom? Thats this"
-
-[node name="Forest" parent="RoomManager" instance=ExtResource("4_83ei8")]
-offset_left = 1175.0
-offset_top = -1093.0
-offset_right = 1617.0
-offset_bottom = -793.0
-room_name = "The Forest"
-room_desc = "It looks like a forest out here."
+lock = null
 
 [node name="KitchenRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 606.0
@@ -160,6 +155,7 @@ offset_right = 1048.0
 offset_bottom = -1577.0
 room_name = "Kitchen"
 room_desc = "something something this is the kitchen."
+lock = null
 
 [connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
 [connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" method="_on_text_submitted"]

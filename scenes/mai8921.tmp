@@ -145,14 +145,6 @@ offset_bottom = -771.0
 room_name = "Bedroom"
 room_desc = "you know...The bedroom? Thats this"
 
-[node name="Forest" parent="RoomManager" instance=ExtResource("4_83ei8")]
-offset_left = 1175.0
-offset_top = -1093.0
-offset_right = 1617.0
-offset_bottom = -793.0
-room_name = "The Forest"
-room_desc = "It looks like a forest out here."
-
 [node name="KitchenRoom" parent="RoomManager" instance=ExtResource("4_83ei8")]
 offset_left = 606.0
 offset_top = -1877.0

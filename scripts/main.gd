@@ -11,12 +11,13 @@ const Response = preload("res://scenes/response.tscn")
 @onready var scrollbar = scroll.get_v_scroll_bar()
 @onready var command_processor : Node = $CommandProcessor
 @onready var room_manager : Node = $RoomManager
+@onready var hero = %hero
 
 #This function calls this as the game is being created. Placement matters for some of these things
 func _ready() -> void:
 	scrollbar.changed.connect(handle_scrollbar_changed)
-	create_response("Thank you for booting up Nova, please enjoy.")
-	var starting_room_response = command_processor.initialize(room_manager.get_child(0))
+	create_response("Thank you for booting up Nova.exe, please enjoy.")
+	var starting_room_response = command_processor.initialize(room_manager.get_child(0), hero)
 	create_response(starting_room_response)
 
 

@@ -4,29 +4,30 @@ var room_data: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$HouseRoom.connect_exit("east",$OutsideRoom )
-	$HouseRoom.connect_exit("west",$SomeOtherRoom )
-	$HouseRoom.connect_exit("north",$KitchenRoom )
-	$HouseRoom.connect_exit("south",$BedRoom )
+	$HouseRoom.connect_exit_locked("east",$OutsideRoom )
+	$HouseRoom.connect_exit_unlocked("west",$SomeOtherRoom )
+	$HouseRoom.connect_exit_unlocked("north",$KitchenRoom )
+	$HouseRoom.connect_exit_unlocked("south",$BedRoom )
+	$HouseRoom.connect_exit_unlocked("window", $Forest, "house")
 
 	self.room_data = {
 		"house": {
 			"room": $HouseRoom,
 			"items": [
-				{"name": "vase", "type": Types.ItemTypes.KEY}
+				{"name": "key", "type": Types.ItemTypes.KEY, "use": $OutsideRoom}
 			]
 		},
 		"outside": {
 			"room": $OutsideRoom, 
 			"items": [
-				{ "name": "key", "type": Types.ItemTypes.KEY}
+				{"name": "sword", "type": Types.ItemTypes.EQUIP, "use": null}
 			]
 		},
 		"kitchen": {
 			"room": $KitchenRoom, 
 			"items": [
-				{"name": "sword", "type": Types.ItemTypes.EQUIP},
-				{"name": "knife", "type": Types.ItemTypes.EQUIP},
+				{"name": "sword", "type": Types.ItemTypes.EQUIP, "use": null},
+				{"name": "knife", "type": Types.ItemTypes.EQUIP, "use": null},
 			]
 		},
 	}
@@ -41,8 +42,7 @@ func _ready() -> void:
 		# pass in the key "room" to the current_room dict and 
 		# save the value to room_instance
 		var room_instance = current_room["room"]
-		# print out the value of room_instance
-		print("Processing room %s" % room_instance)
+		
 		
 		# pass in the key "items" to the current_room dict and 
 		# save the value to items
@@ -64,8 +64,10 @@ func _ready() -> void:
 			# to get the value and save it to item_type
 			var item_type = item_dict["type"]
 			
+			var item_use = item_dict["use"]
+			
 			# initalize the item by passing in item_name & item_type
-			item.initialize(item_name, item_type)
+			item.initialize(item_name, item_type, item_use)
 			
 			# get the room_instance and add the item we just created
 			room_instance.add_item(item)
