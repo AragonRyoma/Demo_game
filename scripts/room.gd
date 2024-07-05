@@ -39,6 +39,10 @@ func get_room_description():
 	return "You are in: " + room_name + "\nIt is " + room_desc
 
 
+func looker_room_desc():
+	return room_desc
+
+
 func print_items():
 	if room_items_arr.size() == 0:
 		print("no items")
@@ -54,12 +58,12 @@ func print_exits():
 
 
 func connect_exit_unlocked(direction: String, room, override_room = null):
-	_connect_exit(direction,room, false, override_room)
+	return _connect_exit(direction,room, false, override_room)
 
 
 
 func connect_exit_locked(direction: String, room, override_room = null):
-	_connect_exit(direction, room, true, override_room)
+	return _connect_exit(direction, room, true, override_room)
 
 
 func _connect_exit(direction, room, is_locked: bool = false, override_room = null):
@@ -82,6 +86,7 @@ func _connect_exit(direction, room, is_locked: bool = false, override_room = nul
 				room.exits_dic["north"] = exit
 			_:
 				printerr("This direction leads nowhere.")
+	return exit
 
 
 

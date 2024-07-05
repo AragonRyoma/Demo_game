@@ -32,6 +32,8 @@ func process_command(input: String) -> String:
 			return drop_item(second_word)
 		"use","u":
 			return use_key(second_word)
+		"look":
+			return look(second_word)
 		"help","h":
 			return help()
 		_:
@@ -94,6 +96,15 @@ func drop_item(second_word : String) -> String:
 			current_room.add_item(item)
 			return "You've dropped %s" % second_word
 	return "words"
+
+func look(second_word) -> String:
+	match second_word:
+		"","here","around":
+			return current_room.looker_room_desc()
+
+	return "Wait what am I even looking for?"
+	
+
 
 # this function is what allows you to change the room you are in. It tells the players data based off the room they switched to.
 func change_room(new_room : GameRoom) -> String:
